@@ -14,6 +14,7 @@ Our goal in this project is to capture the highest number of different marine sp
 - David [@dalmeida97](https://github.com/dalmeida97)
 - Yosef [@yosefguevara012](https://github.com/yosefguevara012)
 - Manny [@manuel-valencia](https://github.com/manuel-valencia)
+- Martina Figlia [@miaspugnetta](https://github.com/MiaSpugnetta)
 - Tell me your GitHub usernames :)
 
 To avoid the computational overhead of video encoding, we will store a JPG sequence of 720p resolution. The FPS rate will be 2fps to avoid unnecessary redundancy and considering storage constraints.
@@ -32,9 +33,9 @@ This post-processing comprises:
 
 2. Object detection and classification
 
-   As suggested by [@wooohoooo](https://github.com/wooohoooo), an unsupervised approach is beneficial since we don't know how many types of fish there are, and we only care about differentiating them.
+   As suggested by [@miaspugnetta](https://github.com/MiaSpugnetta), an unsupervised approach is beneficial since we don't know how many types of fish there are, and we only care about differentiating them.
 
-   [@wooohoooo](https://github.com/wooohoooo)'s suggestion was using DINOv2: [How to Classify Images with DINOv2](https://blog.roboflow.com/how-to-classify-images-with-dinov2/)
+   [@miaspugnetta](https://github.com/MiaSpugnetta)'s suggestion was using DINOv2: [How to Classify Images with DINOv2](https://blog.roboflow.com/how-to-classify-images-with-dinov2/)
 
    Additional references:
    - [YOLO-Fish](https://www.sciencedirect.com/science/article/abs/pii/S1574954122002977)
