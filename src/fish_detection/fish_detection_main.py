@@ -3,32 +3,18 @@ import os
 
 from fish_detection import load_model, get_grounding_output, load_image, plot_boxes_to_image
 
-
-
-
 # cfg
 input_dir = 'input'
 image_path = f'{input_dir}/photo.png'
-
-
-
-
 text_prompt = 'fish'
 output_dir = 'output'
 box_threshold = 0.35
 text_threshold = 0.25
 token_spans = None
-
-
-
 model = load_model("GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py", "GroundingDINO/weights/groundingdino_swint_ogc.pth")
-
 # make dir
 os.makedirs(output_dir, exist_ok=True)
 os.makedirs(input_dir, exist_ok=True)
-
-
-
 # load image
 image_pil, image = load_image(image_path)
 cpu_only = True
