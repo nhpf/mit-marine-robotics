@@ -7,6 +7,24 @@ This repository relates to the design of an ocean lander using a Raspberry Pi 0.
 
 Our goal in this project is to capture the highest number of different marine species on camera.
 
+## Project Setup
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Put your MP4 video files in the `media/input` directory and run the following command:
+
+```bash
+python src/main.py
+```
+
+The output files will be stored in the `media/output` directory.
+
+> For now the script only color corrects the video files using the [Dive Color Corrector](https://github.com/bornfree/dive-color-corrector/tree/main) algorithm.
+
 ## Contributors
 
 - Thomas [@wooohoooo](https://github.com/wooohoooo)
@@ -28,6 +46,7 @@ This post-processing comprises:
 1. Color correction for underwater vision
 
    Choose one of the approaches:
+
    - Use GAN: [Underwater-Color-Correction](https://github.com/cameronfabbri/Underwater-Color-Correction)
    - Simpler algorithm: [Dive Color Corrector](https://github.com/bornfree/dive-color-corrector/tree/main)
 
@@ -38,18 +57,10 @@ This post-processing comprises:
    [@miaspugnetta](https://github.com/MiaSpugnetta)'s suggestion was using DINOv2: [How to Classify Images with DINOv2](https://blog.roboflow.com/how-to-classify-images-with-dinov2/)
 
    Additional references:
+
    - [YOLO-Fish](https://www.sciencedirect.com/science/article/abs/pii/S1574954122002977)
    - [Automatic fish detection in underwater videos by a deep neural network-based hybrid motion learning system](https://academic.oup.com/icesjms/article/77/4/1295/5366225)
-
-## Project Setup
-
-```bash
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
 
 ## License
 
 This repository is licensed under the [MIT License](https://github.com/nhpf/mit-marine-robotics/blob/master/LICENSE)
-
