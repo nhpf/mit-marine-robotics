@@ -7,8 +7,9 @@ from typing import Generator
 
 import cv2
 import numpy as np
+from tqdm import tqdm
 
-from .color_correcting import _apply_filter, _get_filter_matrix
+from .color_correcting import _apply_filter, _get_filter_matrix, correct_img
 
 SAMPLE_SECONDS = 2  # Extracts color correction from every N seconds
 
@@ -128,3 +129,38 @@ def process_video(input_video_path: str, output_video_path: str) -> None:
 
     cap.release()
     new_video.release()
+
+
+def get_color_corrected_frames(
+    video_path: str, output_dir: str, target_fps: int
+) -> None:
+    cap = cv2.VideoCapture(video_path)
+    original_fps = cap.get(cv2.CAP_PROP_FPS)
+    frame_interval = math.ceil(original_fps / target_fps)
+    frame_count = math.ceil(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+
+    count = 0
+    output_count = 0
+
+    # Use tqdm to track progress
+    with tqdm(
+        total=frame_count, desc="Generating color corrected frames", unit="frame"
+    ) as pbar:
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
+
+            # Save the frame if it's one of the frames we want to keep
+            if count % frame_interval == 0:
+                corrected_frame = correct_img(frame)
+
+                output_count += 1
+                output_count_str = str(output_count).zfill(6)
+                cv2.imwrite(f"{output_dir}/{output_count_str}.png", corrected_frame)
+
+            count += 1
+            pbar.update(1)
+
+    cap.release()
+    print(f"PNG sequence creation complete for {video_path}\n\n")

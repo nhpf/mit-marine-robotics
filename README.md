@@ -7,6 +7,8 @@ This repository relates to the design of an ocean lander using a Raspberry Pi 0.
 
 Our goal in this project is to capture the highest number of different marine species on camera.
 
+> Special thanks to Martina Figlia [@miaspugnetta](https://github.com/MiaSpugnetta) and Gui Menezes for contributing with the core implementation of the fish detection algorithm.
+
 ## Project Setup
 
 ```bash
@@ -21,7 +23,7 @@ Put your MP4 video files in the `media/input` directory and run the following co
 python src/main.py
 ```
 
-The output files will be stored in the `media/output` directory.
+Color-corrected PNG files for each video will be stored in the `media/frames` directory.
 
 > For now the script only color corrects the video files using the [Dive Color Corrector](https://github.com/bornfree/dive-color-corrector/tree/main) algorithm.
 

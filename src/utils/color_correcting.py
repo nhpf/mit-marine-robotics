@@ -142,21 +142,13 @@ def _get_filter_matrix(mat: np.ndarray) -> np.ndarray:
     )
 
 
-def _correct(mat: np.ndarray) -> np.ndarray:
+def correct_img(mat: np.ndarray) -> np.ndarray:
     original_mat = mat.copy()
+    rgb_mat = cv2.cvtColor(original_mat, cv2.COLOR_BGR2RGB)
 
-    filter_matrix = _get_filter_matrix(mat)
+    filter_matrix = _get_filter_matrix(rgb_mat)
 
-    corrected_mat = _apply_filter(original_mat, filter_matrix)
+    corrected_mat = _apply_filter(rgb_mat, filter_matrix)
     corrected_mat = cv2.cvtColor(corrected_mat, cv2.COLOR_RGB2BGR)
 
     return corrected_mat
-
-
-if __name__ == "__main__":
-    mat = cv2.imread("../../media/sample.png")
-    mat = cv2.cvtColor(mat, cv2.COLOR_BGR2RGB)
-
-    corrected_mat = _correct(mat)
-
-    cv2.imwrite("../../media/corrected.png", corrected_mat)
